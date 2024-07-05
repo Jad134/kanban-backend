@@ -16,12 +16,12 @@ class TaskModel(models.Model):
     due_date = models.DateField(default=datetime.date.today)
     priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES, default='medium')
     category = models.CharField(max_length=30)
+    bucket = models.CharField(max_length=30, default='todo')
     
    
     def __str__(self):
         return self.title
     
-
 
 class SubtaskModel(models.Model):
     task = models.ForeignKey(TaskModel, related_name='subtasks', on_delete=models.CASCADE)
