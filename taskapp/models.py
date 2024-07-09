@@ -11,13 +11,13 @@ class TaskModel(models.Model):
         ('urgent', 'Urgent'),
     ]
     title= models.CharField(max_length=100)
-    description = models.CharField(max_length=100)
+    description = models.CharField(max_length=100, null=True, blank=True)
     assigned_to = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     due_date = models.DateField(default=datetime.date.today)
     priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES, default='medium')
     category = models.CharField(max_length=30)
     bucket = models.CharField(max_length=30, default='todo')
-    subtasks = models.JSONField(default=list)
+    subtasks = models.JSONField(default=list, null=True, blank=True)
    
     def __str__(self):
         return self.title
