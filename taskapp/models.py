@@ -17,16 +17,9 @@ class TaskModel(models.Model):
     priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES, default='medium')
     category = models.CharField(max_length=30)
     bucket = models.CharField(max_length=30, default='todo')
-    
+    subtasks = models.JSONField(default=list)
    
     def __str__(self):
         return self.title
     
 
-class SubtaskModel(models.Model):
-    task = models.ForeignKey(TaskModel, related_name='subtasks', on_delete=models.CASCADE)
-    title = models.CharField(max_length=100)
-    done = models.BooleanField(default=False)
-
-    def __str__(self):
-        return f"{self.title} - Done: {self.done}"
