@@ -23,3 +23,8 @@ class TaskModel(models.Model):
         return self.title
     
 
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    color = models.CharField(max_length=30, blank=True)
+    initials = models.CharField(max_length=10, blank=True)
