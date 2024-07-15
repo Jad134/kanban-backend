@@ -12,7 +12,7 @@ class TaskModel(models.Model):
     ]
     title= models.CharField(max_length=100)
     description = models.CharField(max_length=100, null=True, blank=True)
-    assigned_to = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    assigned_to = models.ManyToManyField(User, blank=True)
     due_date = models.DateField(default=datetime.date.today)
     priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES, default='medium')
     category = models.CharField(max_length=30)

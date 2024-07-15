@@ -4,7 +4,7 @@ from taskapp.models import  TaskModel
 from .models import Profile
 
 class TaskSerializer(serializers.ModelSerializer):
-
+    assigned_to = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), many=True)
 
     class Meta:
         model = TaskModel
@@ -25,7 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', 'profile']
+        fields = ['id','username', 'email', 'password', 'profile']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
