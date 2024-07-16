@@ -28,3 +28,13 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     color = models.CharField(max_length=30, blank=True)
     initials = models.CharField(max_length=10, blank=True)
+
+
+class Contact(models.Model):
+    name =  models.CharField(max_length=30, blank=False)
+    email = models.CharField(max_length=30, blank=False)
+    number = models.CharField(max_length=20, blank=False)
+    initials =  models.CharField(max_length=10, blank=True)
+
+    def __str__(self):
+        return self.name

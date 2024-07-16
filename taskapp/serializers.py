@@ -1,7 +1,7 @@
 from django.contrib.auth.models import Group, User
 from rest_framework import serializers
 from taskapp.models import  TaskModel
-from .models import Profile
+from .models import Contact, Profile
 
 class TaskSerializer(serializers.ModelSerializer):
     assigned_to = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), many=True)
@@ -33,3 +33,8 @@ class UserSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         Profile.objects.create(user=user, **profile_data)
         return user
+    
+class ContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contact
+        fields = ['name', 'email', 'number', 'initials']

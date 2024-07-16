@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import TaskModel
-from .serializers import  TaskSerializer, UserSerializer
+from .models import Contact, TaskModel
+from .serializers import  ContactSerializer, TaskSerializer, UserSerializer
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -44,3 +44,7 @@ class UserList(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     
+
+class ContactList(generics.ListCreateAPIView):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
