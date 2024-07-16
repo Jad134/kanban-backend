@@ -26,5 +26,6 @@ urlpatterns = [
     path('login/', views.LoginView.as_view()),
     path('register/', views.UserCreate.as_view(), name='user-register'),
     path('users/', views.UserList.as_view()), 
-    path('contact/', views.ContactList.as_view()), 
+    path('contact/', views.ContactList.as_view()),
+    path('contact/<int:pk>/', views.ContactUpdate.as_view()), 
 ]
