@@ -4,7 +4,7 @@ from taskapp.models import  TaskModel
 from .models import Contact, Profile
 
 class TaskSerializer(serializers.ModelSerializer):
-    assigned_to = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), many=True)
+    assigned_to = serializers.PrimaryKeyRelatedField(queryset=Contact.objects.all(), many=True)
 
     class Meta:
         model = TaskModel
