@@ -12,16 +12,29 @@ from rest_framework.response import Response
 from django.contrib.auth.models import User
 
 
-# Create your views here.
+
 class TaskListCreate(generics.ListCreateAPIView):
+    """
+    Create task List with serializer
+    """
     queryset = TaskModel.objects.all()
     serializer_class = TaskSerializer
 
+
+    
 class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    edit or delete single Tasks
+    """
     queryset = TaskModel.objects.all()
     serializer_class = TaskSerializer
+
+
 
 class LoginView(ObtainAuthToken):
+    """
+    Login with Tokin view
+    """
 
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data,
@@ -36,20 +49,32 @@ class LoginView(ObtainAuthToken):
         })
     
 class UserCreate(generics.CreateAPIView):
+    """
+    Create User Views
+    """
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
 class UserList(generics.ListAPIView):
+    """
+    Show registered User View with serializer
+    """
     queryset = User.objects.all()
     serializer_class = UserSerializer
     
 
 class ContactList(generics.ListCreateAPIView):
+    """
+    Show Contact list  View with serializer
+    """
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
 
 
 class ContactUpdate(generics.RetrieveUpdateDestroyAPIView):
+    """
+    View for update the Contacts
+    """
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
