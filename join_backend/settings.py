@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'taskapp',
     'corsheaders',
-     'rest_framework.authtoken',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +135,4 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ]
 }
+
